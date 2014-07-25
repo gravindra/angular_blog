@@ -1,0 +1,21 @@
+<div class="ng-cloak" ng-init="init()">
+  <div class="panel panel-info post">
+    <div class="panel-heading">
+      <editablespan input-class="form-control" model="post.title" on-ready="postTitleEdited(post.title)" span-class="post-title"></editablespan>
+    </div>
+    <form id="new_comment" ng-submit="addComment()">
+      <div class="input-group">
+        <input autofocus="autofocus" class="form-control input-lg" data-non-blank="" id="commentDescription" maxlength="255" ng-model="commentDescription" placeholder="Comment description" type="text" /><span class="input-group-btn"><button class="btn btn-primary btn-lg" type="submit">add</button></span>
+      </div>
+    </form>
+    <ul class="post-group" ng-model="post.comments" ui-sortable="sortableOptions" ui-sortable-ext="sortableEnabled">
+      <li class="post-group-item" ng-class="" ng-repeat="comment in post.comments | orderBy:sortMethod">
+        <div class="comment-body" ng-bind-html="to_trusted(comment.body)">
+        </div>
+        <div class="comment-buttons pull-right">
+          <button class="btn btn-danger btn-xs pull-right" ng-click="deleteComment(comment)" type="button"><span class="">Delete</span></button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

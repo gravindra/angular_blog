@@ -1,0 +1,24 @@
+<div class="ng-cloak" ng-init="init()">
+  <div class="panel panel-default dashboard-post">
+    <div class="panel-heading">
+      <h4>
+        Your posts
+      </h4>
+    </div>
+    <ul class="post-group" ng-show="posts == 0">
+      <li class="post-group-item">
+        You haven't created any posts yet.       
+      </li>
+    </ul>
+    <ul class="post-group">
+      <li class="post-group-item" ng-repeat="post in posts">
+        <button class="btn btn-danger btn-xs pull-right" ng-click="deletePost(post, $index)" type="button"><span class="">Delete</span></button><a href="/posts/{{post.id}}">{{post.title}}</a>
+      </li>
+    </ul>
+  </div>
+  <form id="new_post" ng-submit="createPost(postTitle)">
+    <div class="input-group">
+      <input autofocus="autofocus" class="form-control input-lg" data-non-blank="" id="postDescription" maxlength="255" ng-model="postTitle" placeholder="post title" type="text" /><span class="input-group-btn"><button class="btn btn-primary btn-lg" type="submit">create post</button></span>
+    </div>
+  </form>
+</div>
